@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")).render(
     <Routes>
         <Route path="/" element={<App />} />
         <Route path="/chat" element={<ChatPage />} />
-        <Route path="/room" element={<JoinCreateChat />} />
+        {/* <Route path="/room" element={<JoinCreateChat />} /> */}
         <Route path="*" element={<h1>404 Page not found!!</h1>} />
       </Routes>
     </ChatProvider>

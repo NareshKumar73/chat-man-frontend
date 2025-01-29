@@ -31,7 +31,7 @@ function ChatPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!connected) navigate("/room");
+    if (!connected) navigate("/");
 
     return () => {};
   }, [connected, currentUser, roomId]);
@@ -158,7 +158,7 @@ function ChatPage() {
             onClick={() => {
               setRoomId("");
               setCurrentUser("");
-              navigate("/room");
+              navigate("/");
               toast.success("Logout Successfull");
             }}
             className="dark:bg-red-500 dark:hover:bg-red-700 px-3 py-2 rounded-full"

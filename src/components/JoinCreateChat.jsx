@@ -10,11 +10,8 @@ const JoinCreateChat = () => {
   const navigate = useNavigate();
 
   const {
-    roomId,
     setRoomId,
-    currentUser,
     setCurrentUser,
-    connected,
     setConnected,
   } = useChatContext();
 
