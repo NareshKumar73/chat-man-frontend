@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Using below we can use the class="dark" anywhere in html to make the children follow dark theme  */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Using below we can use the data-theme="dark" anywhere in html to make the children follow dark theme  */
+/* @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); */
