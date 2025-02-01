@@ -1,14 +1,16 @@
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 import mimeIcon from "../assets/attachment.png";
 import sendIcon from "../assets/send.png";
-import { useEffect, useRef, useState } from "react";
-import useChatContext from "../context/ChatContext";
-import { useNavigate } from "react-router";
+import femaleIcon from "../assets/female-right.png";
+import maleIcon from "../assets/male-left.png";
 import { baseURL } from "../services/Axios";
-import { Client } from "@stomp/stompjs";
-import SockJS from "sockjs-client";
 import { getMessages } from "../services/RoomService";
 import timeAgo from "../services/TimeUtil";
+import useChatContext from "../context/ChatContext";
+import { Client } from "@stomp/stompjs";
+import SockJS from "sockjs-client";
 
 function ChatPage() {
   const {
@@ -117,7 +119,7 @@ function ChatPage() {
   const sendMessage = async () => {
     if (stompClient.current && connected && input.trim()) {
       console.log(input);
-      toast.success("Message Sent")
+      toast.success("Message Sent");
 
       const m = {
         sender: currentUser,
@@ -140,7 +142,7 @@ function ChatPage() {
   };
 
   return (
-    <div className="">
+    <div>
       {/* Nav Bar */}
       <header className="dark:border-gray-700 dark:bg-gray-900 h-20 fixed w-full py-5 shadow flex justify-around items-center">
         <div className="">
@@ -161,12 +163,13 @@ function ChatPage() {
               navigate("/");
               toast.success("Logout Successfull");
             }}
-            className="dark:bg-red-500 dark:hover:bg-red-700 px-3 py-2 rounded-full"
+            className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
           >
             Leave Room
           </button>
         </div>
       </header>
+      {/* Chat Area */}
       <main
         ref={chatBoxRef}
         className="py-20 px-2 w-2/3 dark:bg-slate-600 mx-auto h-screen overflow-auto"
@@ -182,12 +185,14 @@ function ChatPage() {
               <div
                 className={`my-2 ${
                   m.sender == currentUser ? " bg-green-800" : " bg-gray-800"
-                } p-2 max-w-xs rounded`}
+                } p-2 max-w-xs rounded-lg`}
               >
                 <div className="flex flex-row gap-2">
                   <img
                     className="h-10 w-10"
-                    src="https://avatar.iran.liara.run/public"
+                    src={`${
+                      m.sender == currentUser ? maleIcon : femaleIcon
+                    }`}
                     alt="avatar"
                   />
                   <div className="flex flex-col gap-1">
@@ -203,7 +208,7 @@ function ChatPage() {
           ))}
         </div>
       </main>
-      {/* Chat Bar */}
+      {/* Chat Input */}
       <div className="fixed bottom-2 w-full h-16">
         <div className="dark:bg-gray-900 h-full flex justify-between items-center px-2 gap-4 rounded w-96 lg:w-2/3 mx-auto">
           <input

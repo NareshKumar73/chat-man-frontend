@@ -83,7 +83,7 @@ const JoinCreateChat = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="p-10 dark:border-gray-700 border w-full flex flex-col gap-5 max-w-md rounded dark:bg-gray-900 shadow">
+      <div className="p-10 dark:border-gray-700 border w-full flex flex-col gap-5 max-w-md rounded-lg dark:bg-gray-900 shadow">
         <div>
           <img src={chatIcon} className="w-24 mx-auto" alt="chat icon" />
           {/* <a href="https://www.flaticon.com/free-icons/question" title="question icons">Question icons created by dmitri13 - Flaticon</a> */}
@@ -101,7 +101,7 @@ const JoinCreateChat = () => {
             placeholder="Enter your Name"
             onChange={handleFormInputChange}
             value={detail.userName}
-            className="w-full dark:bg-gray-600 px-4 py-2 border dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full dark:bg-gray-600 px-4 py-2 border dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <div className="">
@@ -114,7 +114,7 @@ const JoinCreateChat = () => {
             placeholder="Enter a Room ID"
             onChange={handleFormInputChange}
             value={detail.roomId}
-            className="w-full dark:bg-gray-600 px-4 py-2 border dark:border-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full dark:bg-gray-600 px-4 py-2 border dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <div className=" flex justify-center gap-2 mt-2">
