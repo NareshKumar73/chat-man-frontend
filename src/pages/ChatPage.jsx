@@ -122,9 +122,10 @@ function ChatPage() {
       toast.success("Message Sent");
 
       const m = {
-        sender: currentUser,
-        content: input,
         roomId: roomId,
+        from: currentUser,
+        content: input,
+        at: Date.now(),
       };
 
       stompClient.current.publish({
@@ -179,27 +180,27 @@ function ChatPage() {
             <div
               key={index}
               className={`flex ${
-                m.sender == currentUser ? "justify-end" : "justify-start"
+                m.from == currentUser ? "justify-end" : "justify-start"
               }`}
             >
               <div
                 className={`my-2 ${
-                  m.sender == currentUser ? " bg-green-800" : " bg-gray-800"
+                  m.from == currentUser ? " bg-green-800" : " bg-gray-800"
                 } p-2 max-w-xs rounded-lg`}
               >
                 <div className="flex flex-row gap-2">
                   <img
                     className="h-10 w-10"
                     src={`${
-                      m.sender == currentUser ? maleIcon : femaleIcon
+                      m.from == currentUser ? maleIcon : femaleIcon
                     }`}
                     alt="avatar"
                   />
                   <div className="flex flex-col gap-1">
-                    <p>{m.sender}</p>
+                    <p>{m.from}</p>
                     <p>{m.content}</p>
                     <p className="text-xs text-gray-400">
-                      {timeAgo(m.timestamp)}
+                      {timeAgo(m.at)}
                     </p>
                   </div>
                 </div>
